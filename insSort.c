@@ -7,7 +7,7 @@
 #include <string.h>
 
 
-int sort() {
+void sort() {
 
 	int c, d, temp, n;
 	int array[500];

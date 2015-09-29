@@ -1,12 +1,9 @@
-// insertion sort algorithm - pg 18 in intro to algorithms book
-// scott banyard 29/09/15
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 
-int sort() {
+void sort() {
 
 	int c, d, t, n;
 	int array[1000];
@@ -14,7 +11,6 @@ int sort() {
 	printf("Enter length of array: \n");
 	scanf("%d", &n);
 
-	// enter array using scan loop
 	printf("Enter %d integers\n", n);
 
 	for (c = 0; c < n; c++) {
@@ -34,7 +30,6 @@ int sort() {
 		}
 	}
 
-	// prints modified array using loop
 	printf("Array in the ascending order is: \n");
     
     for(c = 0; c <= n - 1; c++) {

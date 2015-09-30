@@ -14,7 +14,7 @@ void sort() {
 	printf("Enter length of array: \n");
 	scanf("%d", &n);
 
-	printf("Enter %d integers\n", n);
+	printf("Enter %d integers: \n", n);
 
 	// loop to enter array up to n-1 (arrays start at 0)
 	for (c = 0; c < n; c++) {

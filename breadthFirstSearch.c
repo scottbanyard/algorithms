@@ -1,3 +1,6 @@
+// breadth first search using linked lists as adjacency lists
+// scott banyard 25/10/15
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -24,7 +27,7 @@ void BFS(struct Edge* adjacencyList[], int vertices, int parent[], int level[], 
 
 	lev = 0;
 	level[startVertex] = lev;
-	//start at startVertex
+	// sets level of startVertex to 0
 
 	while (flag) {
 		flag = 0;
@@ -64,6 +67,7 @@ int main() {
 	// create adjacency list of size vertices + 1 so can array as 1 indexed
 	struct Edge* adjacencyList[vertices + 1];
 
+	// set max sizes of parent/level arrays
 	int parent[vertices + 1];
 	int level[vertices + 1];
 

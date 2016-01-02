@@ -10,23 +10,25 @@ void countingSort(int A[], int k, int n) {
 	int C[100]; // count array
 
 	// sorting method: counting sort
+
+	// iniatlise all count array to 0 up to size of max value
 	for (int i = 0; i <= k; i++) {
 		C[i] = 0;
 	}
 
-	// increments count of that value
+	// increments count of the value where A[j] is the index of the count array
 	for (int j = 1; j <= n; j++) {
 		C[A[j]] = C[A[j]] + 1;
 	}
 
-	// iterate through the new array and add the previous index to the current index
+	// iterate through the count array and add the previous index to the current index
 	for (int i = 1; i <= k; i++) {
 		C[i] = C[i] + C[i-1];
 	}
 
 	/* from right to left, iterate through, get A[j] value, use that as index for C so C[A[j]]
-	and then whatever the value is in that index, that is the index/position the A[j] value will
-	be in in the output array and then C[A[j]] is decremented by 1 */
+	and then whatever the value is in that index, that is the index/position the initial A[j] value 
+	will be in in the output array and then the count (C[A[j]]) is decremented by 1 */
 	for (int j = n; j >= 1; j--) {
 		B[C[A[j]]] = A[j];
 		C[A[j]] = C[A[j]] - 1;
@@ -46,7 +48,7 @@ void countingSort(int A[], int k, int n) {
 int main() {
 	int n; // size of array
 	int A[100]; // input array
-	int k = 0; // max value
+	int k = 0; // max value for size of count array
 
 	printf("Enter length of array: \n");
 	scanf("%d", &n);
@@ -59,6 +61,7 @@ int main() {
 			k = A[i];
 		}
 	}
+	
 	countingSort(A, k, n);
 	return 0;
 }

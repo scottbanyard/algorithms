@@ -20,7 +20,7 @@ int *prefixFunction(Pattern pattern, int patternLength) {
 	int k = 0;
 	// creates memory for prefix table
 	int *pi = malloc(sizeof(int)*patternLength);
-
+	// if pi is null (patternLength is 0) then return NULL to KMP
 	if (!pi) {
 		return NULL;
 	}
@@ -42,7 +42,8 @@ int *prefixFunction(Pattern pattern, int patternLength) {
 int KMP(String string, Pattern pattern, int stringLength, int patternLength) {
 	// gets prefix table
 	int *pi = prefixFunction(pattern, patternLength);
-	int k = -1;
+	// number of characters matched, start -1 as 0 indexed
+	int k = -1; 
 
 	// if prefix table returned null at pattern length is size 0, terminate
 	if (!pi) {
@@ -50,19 +51,25 @@ int KMP(String string, Pattern pattern, int stringLength, int patternLength) {
 	}
 
 	for (int i = 0; i < stringLength; i++) {
+		// next character does not match
 		while (k > -1 && pattern.val[k+1] != string.val[i]) {
 			k = pi[k];
 		}
+		// next character matches
 		if (pattern.val[k+1] == string.val[i]) {
 			k++;
 		}
+		// all matched
 		if (k == patternLength - 1) {
+			// free up prefix table - not needed anymore
 			free(pi);
 			return i - k;
 		}
 
 	}
+	// free up prefix table - not needed anymore
 	free(pi);
+	// didn't go into if case to return i-k, so must be no matches
 	return -1;
 }
 

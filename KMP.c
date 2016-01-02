@@ -15,6 +15,7 @@ typedef struct String {
     char val[50];
 } String ;
 
+// function that create the prefix table of pattern length (an array)
 int *prefixFunction(Pattern pattern, int patternLength) {
 	int k = 0;
 	// creates memory for prefix table
@@ -37,7 +38,7 @@ int *prefixFunction(Pattern pattern, int patternLength) {
 	return pi;
 }
 
-
+// function that returns the position of where the string began matching
 int KMP(String string, Pattern pattern, int stringLength, int patternLength) {
 	// gets prefix table
 	int *pi = prefixFunction(pattern, patternLength);
@@ -90,7 +91,7 @@ int main() {
 	for (int i = 0; i < patternLength; i++) {
 		patternToSend.val[i] = patternStore[i];
 	}
-	
+
 	printf("\n");
 
 	// i will give the position where it initially matches

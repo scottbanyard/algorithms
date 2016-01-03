@@ -104,7 +104,7 @@ int main() {
 	// i will give the position where it initially matches
 	i = KMP(stringToSend, patternToSend, stringLength, patternLength);
 	if (i >= 0) {
-		printf("Matched at position %d with the character: '%c'.\n", i, stringToSend.val[i]);
+		printf("Matched at position %d with the character: '%c'.\n", i+1, stringToSend.val[i]);
 		printf("Rest of the string following the pattern: ");
 		for (int j = i; j < stringLength; j++) {
 			printf("%c", stringToSend.val[j]);
